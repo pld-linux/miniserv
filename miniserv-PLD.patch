@@ -5,7 +5,7 @@
      fgets(buf, BUFSIZE-1, stdin); 
    }
 -  f = fopen("/home/httpd/off.html", "r");
-+  f = fopen("/home/services/httpd/miniserv/off.html", "r");
++  f = fopen("/home/services/miniserv/off.html", "r");
    while ( fgets(buf, BUFSIZE-1, f ) )
      printf("%s", buf);
    return 0;
