@@ -12,6 +12,7 @@ Source2:	%{name}.txt
 Source3:	%{name}-PLD.txt
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-off.patch
+Patch2:		%{name}-gcc33.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_miniservdir /home/services/%{name}
@@ -30,6 +31,7 @@ nam - wy¶wietla siê piêkny komunikat (który mo¿emy sobie zdefiniowaæ).
 %setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__cc} %{rpmcflags} -Wall miniserv.c -o miniserv
