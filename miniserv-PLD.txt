@@ -4,5 +4,10 @@ Dla blokowania po iptables:
 
 iptables -t nat -A PREROUTING -s 192.168.0.2 -d 0/0 -p tcp -j REDIRECT --to-port 200
 
+Uwagi:
+
+- na rlinetd-0.5.1-16 po instlacji paczki - nie dzia³a, nale¿y przeinicjowaæ
+  rc-inetd
+
 djrzulf
 
