@@ -1,5 +1,5 @@
-Summary:	miniserv
-Summary(pl):	Narzêdzie do egzekwowania op³at abonamentowych
+Summary:	Tool to execute charge of Internet subscribtion
+Summary(pl):	Narzêdzie do egzekwowania op³at abonamentowych za Internet
 Name:		miniserv
 Version:	01
 Release:	1
@@ -15,8 +15,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_miniservdir /home/services/httpd/%{name}/
 
 %description
+This tool is for execute charge of Internet subscribtion. You do only
+a redirection at firewall and person, who don't pay for internet get
+nice page (you can create own page).
 
 %description -l pl
+Narzêdzie s³u¿y do egzekwowania op³at abonamentowych za Internet.
+Odpowiednie przekierowanie na firewall'u i ju¿ osobie, która nie p³aci
+nam - wy¶wietla siê piêkny komunikat (który mo¿emy sobie zdefiniowaæ).
 
 %prep
 %setup -q -n %{name}
@@ -45,7 +51,7 @@ if [ -f /var/lock/subsys/rc-inetd ]; then
 else
         echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
 fi
- 
+
 %postun
 if [ -f /var/lock/subsys/rc-inetd ]; then
         /etc/rc.d/init.d/rc-inetd reload
