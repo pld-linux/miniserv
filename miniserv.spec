@@ -7,6 +7,8 @@ License:	GPL
 Group:		Networking/Utilities
 Source0:	%{name}.tgz
 Source1:	%{name}.inetd
+Source2:	%{name}.txt
+Source3:	%{name}-PLD.txt
 Patch0:		%{name}-PLD.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_miniservdir /home/services/httpd/%{name}/
@@ -29,6 +31,8 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_miniservdir},%{_sysconfdir}/sysconfig/
 install miniserv	$RPM_BUILD_ROOT%{_sbindir}
 install off/off.html	$RPM_BUILD_ROOT%{_miniservdir}
 install %{SOURCE1}	$RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/rc-inetd/miniserv
+install %{SOURCE2}	./
+install %{SOURCE3}	./
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -47,6 +51,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc miniserv.txt miniserv-PLD.txt
 %attr(755,root,root) %{_sbindir}/miniserv
 %{_miniservdir}/
 %{_sysconfdir}/sysconfig/rc-inetd/
