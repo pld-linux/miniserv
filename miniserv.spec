@@ -6,6 +6,7 @@ Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Source0:	%{name}.tgz
+# Source0-md5:	f7aebb2d54edb3f043f4a8fc476169bf
 Source1:	%{name}.inetd
 Source2:	%{name}.txt
 Source3:	%{name}-PLD.txt
