@@ -12,7 +12,8 @@ Source3:	%{name}-PLD.txt
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-off.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-%define		_miniservdir /home/services/httpd/%{name}/
+
+%define		_miniservdir /home/services/httpd/%{name}
 
 %description
 This tool is for execute charge of Internet subscribtion. You do only
@@ -21,7 +22,7 @@ nice page (you can create own page).
 
 %description -l pl
 Narzêdzie s³u¿y do egzekwowania op³at abonamentowych za Internet.
-Odpowiednie przekierowanie na firewall'u i ju¿ osobie, która nie p³aci
+Odpowiednie przekierowanie na firewallu i ju¿ osobie, która nie p³aci
 nam - wy¶wietla siê piêkny komunikat (który mo¿emy sobie zdefiniowaæ).
 
 %prep
@@ -34,7 +35,7 @@ nam - wy¶wietla siê piêkny komunikat (który mo¿emy sobie zdefiniowaæ).
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sbindir},%{_miniservdir},%{_sysconfdir}/sysconfig/rc-inetd/}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_miniservdir},%{_sysconfdir}/sysconfig/rc-inetd}
 
 install miniserv	$RPM_BUILD_ROOT%{_sbindir}
 install off/off.html	$RPM_BUILD_ROOT%{_miniservdir}
@@ -61,5 +62,5 @@ fi
 %defattr(644,root,root,755)
 %doc miniserv.txt miniserv-PLD.txt
 %attr(755,root,root) %{_sbindir}/miniserv
-%{_miniservdir}/
-%{_sysconfdir}/sysconfig/rc-inetd/
+%{_miniservdir}
+%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/miniserv
