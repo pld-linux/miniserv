@@ -13,7 +13,7 @@ Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-off.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_miniservdir /home/services/httpd/%{name}
+%define		_miniservdir /home/services/%{name}
 
 %description
 This tool is for execute charge of Internet subscribtion. You do only
