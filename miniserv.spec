@@ -2,7 +2,7 @@ Summary:	Tool to execute charge of Internet subscribtion
 Summary(pl):	Narzêdzie do egzekwowania op³at abonamentowych za Internet
 Name:		miniserv
 Version:	01
-Release:	1
+Release:	2
 License:	GPL
 Group:		Networking/Utilities
 Source0:	%{name}.tgz
