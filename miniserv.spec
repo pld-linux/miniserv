@@ -10,6 +10,7 @@ Source1:	%{name}.inetd
 Source2:	%{name}.txt
 Source3:	%{name}-PLD.txt
 Patch0:		%{name}-PLD.patch
+Patch1:		%{name}-off.patch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_miniservdir /home/services/httpd/%{name}/
 
@@ -19,7 +20,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %prep
 %setup -q -n %{name}
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
 %{__cc} %{rpmcflags} -Wall miniserv.c -o miniserv
