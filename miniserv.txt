@@ -1,0 +1,57 @@
+Tak... Czêsto zdarza siê tak, ¿e jako administratorzy ASKów mamy problemy ze zbieraniem (terminowym) abonamentów. Ja generalnie stosujê tak± zasadê:
+
+    * w regulaminie jest jasno i wyra¼nie napisane do kiedy trzeba p³aciæ
+    * jak sie nie zap³aci to siê Netu nie ma
+    * nie ma znajomo¶ci, kolegów itp. w temacie abonamentów. Wszyscy s± równi... 
+
+To zasady podstawowe.. A jak siê to ma do Linuxa? Otó¿ jak klient nie zap³aci to go odcinam od Netu. Otoczenie sieciowe ma, LanChata ma, tylko Netu nie ma. Gdy wpisze w przegl±darce jaki¶ adres wyskakuje mu komunikat, ¿e zosta³ wy³±czony i ma siê skontaktowaæ z Administratorem. Teraz po krótce wyja¶niê jak to dzia³a...
+
+Sercem tego wszystkiego jest Miniserv - ma³y programik napisany przez zaprzyja¼nionego Admina Hocus'a. Mo¿na go ¶ci±gn±æ lokalnie w dziale download (http://moon.net.pl/modules.php?name=Downloads&d_op=getit&lid=1)
+
+No to teraz tak:
+
+Plik miniserv kopiujemy np. do /usr/sbin natomiast plik off.html do katalogu /home/httpd.
+
+Najpierw sprawdzimy czy dzia³a... Z konsolki uruchamiamy:
+
+/usr/sbin/miniserv
+
+Je¼eli nic siê nie wy¶wietla - naci¶nijcie ENTER. Powinna siê wam pokazaæ zawarto¶æ pliku off.html na ekranie - je¶li nie, to macie problem - polecam skompilowaæ samemu poleceniem:
+
+gcc miniserv.c -ominiserv
+
+Je¿eli w koñcu zadzia³a, musimy skonfigurowaæ nasz system. Ja osobi¶cie u¿ywam rc-inetd wiêc:
+
+Edytujemy plik:
+
+/etc/services
+
+i dopisujemy tak± linijkê:
+
+miniserv 200/tcp
+
+Teraz musimy siê udaæ do katalogu:
+
+/etc/sysconfig/rc-inetd
+
+i tworzymy plik miniserv o nastêpuj±cej zawarto¶ci:
+
+SERVICE_NAME=miniserv
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=200
+FLAGS=nowait
+USER=root
+SERVER=tcpd
+DAEMON=/usr/sbin/miniserv
+
+Teraz wystarczy tylko restartn±æ rc.inetd
+
+¯eby sprawdziæ czy wszystko dzia³a, mo¿emy w przegl±darce WWW wpisaæ: http://nasz.serwer:200 i powinni¶my zostaæ uraczeni piêknym komunikatem :-0
+
+Teraz sprawa najwa¿niejsza. Jak blokowaæ nie p³ac±cych nam delikwentów?
+
+ipchains -A input -s 192.168.0.2 -d 0/0 -p TCP -j REDIRECT 200 &
+
+gdzie zamiast 192.168.0.2 wpisujemy IP klienta.
+

@@ -1,0 +1,8 @@
+Je¶li nie dzia³a, to dopisz do /etc/services us³ugê miniserv.
+
+Dla blokowania po iptables:
+
+iptables -t nat -A PREROUTING -s 192.168.0.2 -d 0/0 -p tcp -j REDIRECT --to-port 200
+
+djrzulf
+

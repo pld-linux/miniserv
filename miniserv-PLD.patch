@@ -1,0 +1,11 @@
+--- miniserv/miniserv.c.orig	Wed Apr  9 21:51:19 2003
++++ miniserv/miniserv.c	Wed Apr  9 21:51:56 2003
+@@ -24,7 +24,7 @@
+     cnt++;
+     fgets(buf, BUFSIZE-1, stdin); 
+   }
+-  f = fopen("/home/httpd/off.html", "r");
++  f = fopen("/home/services/httpd/miniserv/off.html", "r");
+   while ( fgets(buf, BUFSIZE-1, f ) )
+     printf("%s", buf);
+   return 0;

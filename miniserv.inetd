@@ -1,0 +1,9 @@
+SERVICE_NAME=miniserv
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=200
+FLAGS=nowait
+USER=root
+SERVER=tcpd
+DAEMON=/usr/sbin/miniserv
+
