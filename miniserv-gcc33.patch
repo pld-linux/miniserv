@@ -1,0 +1,13 @@
+diff -uraN miniserv.orig/miniserv.c miniserv/miniserv.c
+--- miniserv.orig/miniserv.c	2002-06-20 00:21:40.000000000 +0200
++++ miniserv/miniserv.c	2003-06-29 10:42:25.000000000 +0200
+@@ -10,7 +10,7 @@
+ 
+ #include <stdio.h>
+ #include <ctype.h>
+-#include <varargs.h>
++#include <stdarg.h>
+ 
+ #define BUFSIZE 5000
+ 
+
