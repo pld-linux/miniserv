@@ -66,4 +66,4 @@ fi
 %doc miniserv.txt miniserv-PLD.txt
 %attr(755,root,root) %{_sbindir}/miniserv
 %{_miniservdir}
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/rc-inetd/miniserv
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/rc-inetd/miniserv
