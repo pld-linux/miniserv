@@ -13,6 +13,7 @@ Source3:	%{name}-PLD.txt
 Patch0:		%{name}-PLD.patch
 Patch1:		%{name}-off.patch
 Patch2:		%{name}-gcc33.patch
+BuildRequires:	rpmbuild(macros) >= 1.268
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_miniservdir /home/services/%{name}
@@ -50,15 +51,11 @@ install %{SOURCE3}	./
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %files
