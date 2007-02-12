@@ -1,5 +1,5 @@
 Summary:	Tool to execute charge of Internet subscribtion
-Summary(pl):	Narzêdzie do egzekwowania op³at abonamentowych za Internet
+Summary(pl.UTF-8):   NarzÄ™dzie do egzekwowania opÅ‚at abonamentowych za Internet
 Name:		miniserv
 Version:	01
 Release:	2
@@ -23,10 +23,10 @@ This tool is for execute charge of Internet subscribtion. You do only
 a redirection at firewall and person, who don't pay for internet get
 nice page (you can create own page).
 
-%description -l pl
-Narzêdzie s³u¿y do egzekwowania op³at abonamentowych za Internet.
-Odpowiednie przekierowanie na firewallu i ju¿ osobie, która nie p³aci
-nam - wy¶wietla siê piêkny komunikat (który mo¿emy sobie zdefiniowaæ).
+%description -l pl.UTF-8
+NarzÄ™dzie sÅ‚uÅ¼y do egzekwowania opÅ‚at abonamentowych za Internet.
+Odpowiednie przekierowanie na firewallu i juÅ¼ osobie, ktÃ³ra nie pÅ‚aci
+nam - wyÅ›wietla siÄ™ piÄ™kny komunikat (ktÃ³ry moÅ¼emy sobie zdefiniowaÄ‡).
 
 %prep
 %setup -q -n %{name}
