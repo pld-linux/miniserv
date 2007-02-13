@@ -1,5 +1,5 @@
 Summary:	Tool to execute charge of Internet subscribtion
-Summary(pl.UTF-8):   Narzędzie do egzekwowania opłat abonamentowych za Internet
+Summary(pl.UTF-8):	Narzędzie do egzekwowania opłat abonamentowych za Internet
 Name:		miniserv
 Version:	01
 Release:	2
